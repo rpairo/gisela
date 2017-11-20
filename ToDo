@@ -1,0 +1,44 @@
+private void crearFicheroMP3() {
+		HashMap<String, String> myHashRender = new HashMap();
+
+		String frase = "Lo siento, no he entendido bien a que idioma deseas que traduzca. Solo dispongo del Francés e Inglés.";
+		String nombreMP3 = "/" + "no_entiendo_idioma" + ".mp3";
+
+		String ubicacionFichero = Environment.getExternalStorageDirectory().toString() + nombreMP3;
+
+		myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, frase);
+		voiceSpeaker.tts.synthesizeToFile(frase, myHashRender, ubicacionFichero);
+
+		File[] files = Environment.getExternalStorageDirectory().listFiles();
+
+		// Muestra todos los ficheros de la ubicacion
+		for (int i = 0; i < files.length; i++)
+			Log.d("files", files[i].getName());
+	}
+
+
+// reproducir los audios, y hacer la llamada al speechrecognizer luego, asi se arregla el problema
+
+MediaPlayer mp = MediaPlayer.create(this, R.raw.elija_idioma);
+		mp.start();
+
+		mp.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+
+				Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+				i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-ES");
+				i.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, true);
+
+				try {
+					startActivityForResult(i, VOICE_LISTENER_PREGUNTA_IDIOMA_TRADUCCION);
+				} catch (Exception e) {
+					// Toast.makeText(this, "Este movil no es capaz de usar el reconocimiento de voz.", Toast.LENGTH_LONG).show();
+				}
+
+			}
+		});
+		
+		
+// cambiar todos los tts por mp3

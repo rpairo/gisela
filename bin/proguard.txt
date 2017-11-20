@@ -1,0 +1,27 @@
+# view AndroidManifest.xml #generated:66
+-keep class gisela.ControlDesbloqueo { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class gisela.Principal { <init>(...); }
+
+# view AndroidManifest.xml #generated:63
+-keep class gisela.ViewfinderEE368 { <init>(...); }
+
+# view AndroidManifest.xml #generated:44
+-keep class instrucciones.GestorDeInstrucciones { <init>(...); }
+
+# view AndroidManifest.xml #generated:39
+-keep class llamar.Llamar { <init>(...); }
+
+# view AndroidManifest.xml #generated:40
+-keep class musica.ReproductorMusica { <init>(...); }
+
+# view AndroidManifest.xml #generated:54
+-keep class noticias.ReproductorNoticias { <init>(...); }
+
+# view AndroidManifest.xml #generated:49
+-keep class radio.GestorRadios { <init>(...); }
+
+# view AndroidManifest.xml #generated:58
+-keep class translate.GestorTraductor { <init>(...); }
+
